@@ -1,0 +1,49 @@
+{
+  "workflowMonitoring": {
+    "summaryCards": [
+      { "label": "Total Workflows", "value": "28", "note": "All workflows" },
+      { "label": "Successful", "value": "18", "note": "64.3% of total", "status": "success" },
+      { "label": "Running", "value": "3", "note": "10.7% of total", "status": "running" },
+      { "label": "Failed", "value": "7", "note": "25.0% of total", "status": "failed" }
+    ],
+    "activeWorkflows": [
+      { "id": "1", "name": "React CI", "icon": "react", "repository": "react-app", "branch": "main", "status": "Success", "triggeredBy": "dev-admin", "startedAt": "May 17, 10:30 AM", "duration": "2m 45s", "initials": "DA" },
+      { "id": "2", "name": "Deploy to Azure", "icon": "azure", "repository": "react-app", "branch": "main", "status": "Running", "triggeredBy": "dev-admin", "startedAt": "May 17, 10:20 AM", "duration": "1m 12s", "initials": "DA" },
+      { "id": "3", "name": "Backend CI", "icon": "node", "repository": "node-api", "branch": "develop", "status": "Success", "triggeredBy": "john.doe", "startedAt": "May 17, 10:05 AM", "duration": "3m 15s", "initials": "JD" },
+      { "id": "4", "name": "Deploy Staging", "icon": "docker", "repository": "node-api", "branch": "develop", "status": "Failed", "triggeredBy": "john.doe", "startedAt": "May 17, 09:40 AM", "duration": "2m 10s", "initials": "JD" },
+      { "id": "5", "name": "E2E Tests", "icon": "test", "repository": "react-app", "branch": "main", "status": "Success", "triggeredBy": "dev-admin", "startedAt": "May 17, 09:20 AM", "duration": "4m 05s", "initials": "DA" }
+    ],
+    "workflowDetails": {
+      "title": "Deploy to Azure",
+      "state": "In Progress",
+      "stages": [
+        { "label": "Checkout", "status": "Success" },
+        { "label": "Build",    "status": "Success" },
+        { "label": "Test",     "status": "Success" },
+        { "label": "Package",  "status": "Success" },
+        { "label": "Deploy",   "status": "In Progress" }
+      ],
+      "logs": [
+        "10:20:15 Starting deployment to Azure...",
+        "10:20:18 Authenticating with Azure...",
+        "10:20:22 Deploying web application...",
+        "10:20:28 Updating configuration...",
+        "10:20:31 Waiting for health check..."
+      ],
+      "runInfo": {
+        "runId": "#184729392",
+        "triggeredBy": "dev-admin",
+        "repository": "react-app",
+        "branch": "main",
+        "startedAt": "May 17, 10:20 AM",
+        "duration": "1m 12s",
+        "status": "In Progress"
+      }
+    }
+  },
+  "dashboard": { "metrics": [] },
+  "pipelineManagement": { "pipelines": [] },
+  "infrastructureManagement": { "resources": [] },
+  "failureAnalysis": { "failures": [] },
+  "aiAssistant": { "conversations": [] }
+}
