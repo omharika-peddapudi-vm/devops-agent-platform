@@ -13,7 +13,9 @@
     z-index: 100;
     overflow-y: auto;
     overflow-x: hidden;
-    transition: transform 0.25s ease, width 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        width 0.25s ease;
 }
 
 .app-sidebar--closed {
@@ -70,8 +72,11 @@
     font-size: 14px;
     font-weight: 500;
     text-align: left;
+    text-decoration: none;
     cursor: pointer;
-    transition: background 0.15s, color 0.15s;
+    transition:
+        background 0.15s,
+        color 0.15s;
     letter-spacing: 0.01em;
 }
 
@@ -90,7 +95,6 @@
     color: #ffffff;
     font-weight: 600;
 }
-
 
 .sidebar-footer {
     display: flex;
