@@ -1,0 +1,203 @@
+{
+  "statCards": [
+    {
+      "label": "Total Repositories",
+      "value": "24",
+      "change": "20% this week",
+      "changeType": "success",
+      "icon": "coordinator",
+      "iconBg": "#ede9fe",
+      "iconColor": "#6d28d9"
+    },
+    {
+      "label": "Pipelines Generated",
+      "value": "156",
+      "change": "18% this week",
+      "changeType": "success",
+      "icon": "yaml",
+      "iconBg": "#dcfce7",
+      "iconColor": "#16a34a"
+    },
+    {
+      "label": "Infrastructure Deployments",
+      "value": "89",
+      "change": "11% this week",
+      "changeType": "success",
+      "icon": "cloud",
+      "iconBg": "#ede9fe",
+      "iconColor": "#7c3aed"
+    },
+    {
+      "label": "Failed Workflows",
+      "value": "7",
+      "change": "25% this week",
+      "changeType": "error",
+      "icon": "warning",
+      "iconBg": "#fee2e2",
+      "iconColor": "#dc2626"
+    }
+  ],
+  "agents": [
+    {
+      "title": "Coordinator Agent",
+      "subtitle": "Orchestrator",
+      "icon": "coordinator",
+      "status": "Online",
+      "statusVariant": "success"
+    },
+    {
+      "title": "GitHub Agent",
+      "subtitle": "Repository Operations",
+      "icon": "github",
+      "status": "Online",
+      "statusVariant": "success"
+    },
+    {
+      "title": "YAML Agent",
+      "subtitle": "Pipeline Generation",
+      "icon": "yaml",
+      "status": "Online",
+      "statusVariant": "success"
+    },
+    {
+      "title": "Terraform Agent",
+      "subtitle": "Infrastructure Provisioning",
+      "icon": "terraform",
+      "status": "Online",
+      "statusVariant": "success"
+    },
+    {
+      "title": "Failure Agent",
+      "subtitle": "Failure Analysis & Recovery",
+      "icon": "failure",
+      "status": "Online",
+      "statusVariant": "success"
+    }
+  ],
+  "recentActivity": [
+    {
+      "title": "CI Pipeline generated for react-app",
+      "time": "10:30 AM",
+      "variant": "success",
+      "icon": "check"
+    },
+    {
+      "title": "Pull Request created: feature/login",
+      "time": "10:15 AM",
+      "variant": "primary",
+      "icon": "github"
+    },
+    {
+      "title": "Azure Web App deployed successfully",
+      "time": "09:45 AM",
+      "variant": "info",
+      "icon": "cloud"
+    },
+    {
+      "title": "Workflow failed in deploy-staging",
+      "time": "09:20 AM",
+      "variant": "warning",
+      "icon": "warning"
+    },
+    {
+      "title": "Failure fixed for workflow #102",
+      "time": "08:50 AM",
+      "variant": "success",
+      "icon": "wifi"
+    }
+  ],
+  "executionFlow": {
+    "topRow": [
+      {
+        "title": "User Request",
+        "subtitle": "Deploy React App to Azure",
+        "icon": "user"
+      },
+      {
+        "title": "Coordinator Agent",
+        "subtitle": "Request orchestrated",
+        "icon": "coordinator"
+      },
+      {
+        "title": "YAML Agent",
+        "subtitle": "CI/CD pipeline generated",
+        "icon": "yaml"
+      },
+      {
+        "title": "GitHub Agent",
+        "subtitle": "Code pushed & workflow triggered",
+        "icon": "github"
+      }
+    ],
+    "bottomRow": [
+      {
+        "title": "Completed",
+        "subtitle": "Deployment successful",
+        "icon": "check",
+        "variant": "completed"
+      },
+      {
+        "title": "Failure Agent",
+        "subtitle": "Monitoring & issue resolution",
+        "icon": "failure",
+        "variant": "failure"
+      },
+      {
+        "title": "Terraform Agent",
+        "subtitle": "Infrastructure provisioned",
+        "icon": "terraform",
+        "variant": "terraform"
+      }
+    ]
+  },
+  "overview": {
+    "labels": ["May 11", "May 12", "May 13", "May 14", "May 15", "May 16", "May 17"],
+    "success": [38, 55, 70, 88, 75, 62, 50],
+    "failed": [5, 8, 12, 18, 10, 8, 7],
+    "running": [20, 35, 38, 45, 42, 35, 28]
+  },
+  "quickActions": [
+    {
+      "label": "Generate Pipeline",
+      "description": "Create CI/CD pipeline",
+      "icon": "pipeline",
+      "iconBg": "#2563eb",
+      "iconColor": "#ffffff"
+    },
+    {
+      "label": "Create Infrastructure",
+      "description": "Provision cloud resources",
+      "icon": "terraform",
+      "iconBg": "#ea580c",
+      "iconColor": "#ffffff"
+    },
+    {
+      "label": "Create Pull Request",
+      "description": "Open a new Pull Request",
+      "icon": "github",
+      "iconBg": "#111827",
+      "iconColor": "#ffffff"
+    },
+    {
+      "label": "Monitor Workflows",
+      "description": "View and monitor workflows",
+      "icon": "monitor",
+      "iconBg": "#16a34a",
+      "iconColor": "#ffffff"
+    },
+    {
+      "label": "Analyze Failure",
+      "description": "Analyze and fix failures",
+      "icon": "failure",
+      "iconBg": "#dc2626",
+      "iconColor": "#ffffff"
+    },
+    {
+      "label": "View All Activity",
+      "description": "View recent platform activity",
+      "icon": "activity",
+      "iconBg": "#2563eb",
+      "iconColor": "#ffffff"
+    }
+  ]
+}

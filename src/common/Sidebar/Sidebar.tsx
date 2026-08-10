@@ -1,31 +1,57 @@
 import './Sidebar.css';
-import {TbRobot} from 'react-icons/tb';
-import {RxDashboard} from 'react-icons/rx';
+
 import {MdOutlineMonitor, MdOutlineWarningAmber} from 'react-icons/md';
-import {VscGitPullRequest, VscServer, VscGithub} from 'react-icons/vsc';
-import {RiRobot2Line} from 'react-icons/ri';
-import type {IconType} from 'react-icons';
+import {TbRobot} from 'react-icons/tb';
+import {NavLink} from 'react-router-dom';
 
-type NavItem = {
+import type {ReactNode} from 'react';
+
+interface SidebarItem {
+    id: string;
     label: string;
-    icon: IconType;
-    active?: boolean;
-};
+    path: string;
+    icon: ReactNode;
+    subItems?: SidebarItem[];
+}
 
-const NAV_ITEMS: NavItem[] = [
-    {label: 'Dashboard',                icon: RxDashboard},
-    {label: 'AI Assistant',             icon: RiRobot2Line},
-    {label: 'Pipeline Management',      icon: VscGitPullRequest},
-    {label: 'Infrastructure Management',icon: VscServer},
-    {label: 'Github Management',        icon: VscGithub},
-    {label: 'Workflow Monitoring',      icon: MdOutlineMonitor, active: true},
-    {label: 'Failure Analysis',         icon: MdOutlineWarningAmber},
+const SIDEBAR_ITEMS: SidebarItem[] = [
+    {
+        id: 'dashboard',
+        label: 'Dashboard',
+        path: '/dashboard',
+        icon: <MdOutlineMonitor size={17} className='sidebar-nav-icon' />,
+    },
+    {
+        id: 'workflow-monitoring',
+        label: 'Workflow Monitoring',
+        path: '/workflow-monitoring',
+        icon: <MdOutlineMonitor size={17} className='sidebar-nav-icon' />,
+    },
+    {
+        id: 'failure-analysis',
+        label: 'Failure Analysis',
+        path: '/failure-analysis',
+        icon: <MdOutlineWarningAmber size={17} className='sidebar-nav-icon' />,
+    },
 ];
 
-const Sidebar = ({open}: {open: boolean}) => (
-    <aside className={`app-sidebar ${open ? '' : 'app-sidebar--closed'}`}>
+interface SidebarProps {
+    isOpen?: boolean;
+    onClose?: () => void;
+    isCollapsed?: boolean;
+    onToggleCollapse?: () => void;
+}
+
+const Sidebar = ({isOpen = true, isCollapsed = false}: SidebarProps) => (
+    <aside
+        className={`app-sidebar ${isOpen ? '' : 'app-sidebar--closed'} ${
+            isCollapsed ? 'sidebar-collapsed' : ''
+        }`}
+    >
         <div className='sidebar-brand'>
-            <div className='brand-icon'><TbRobot size={22} /></div>
+            <div className='brand-icon'>
+                <TbRobot size={22} />
+            </div>
             <div>
                 <div className='brand-title'>AI DevOps</div>
                 <div className='brand-subtitle'>Platform</div>
@@ -33,15 +59,17 @@ const Sidebar = ({open}: {open: boolean}) => (
         </div>
 
         <nav className='sidebar-nav'>
-            {NAV_ITEMS.map(({label, icon: Icon, active}) => (
-                <button
-                    key={label}
-                    className={`sidebar-link ${active ? 'active' : ''}`}
-                    type='button'
+            {SIDEBAR_ITEMS.map(({id, label, path, icon}) => (
+                <NavLink
+                    key={id}
+                    to={path}
+                    className={({isActive}) =>
+                        `sidebar-link ${isActive ? 'active' : ''}`
+                    }
                 >
-                    <Icon size={17} className='sidebar-nav-icon' />
+                    {icon}
                     <span>{label}</span>
-                </button>
+                </NavLink>
             ))}
         </nav>
 

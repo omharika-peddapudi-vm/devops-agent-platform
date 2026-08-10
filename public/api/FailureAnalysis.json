@@ -1,0 +1,68 @@
+{
+  "summary": {
+    "workflow": "Deploy Staging",
+    "repository": "node-api",
+    "branch": "develop",
+    "failedAt": "May 17, 09:40 AM",
+    "duration": "2m 10s",
+    "runId": "#184729280",
+    "status": "Failed"
+  },
+  "errorMessage": [
+    "Error: npm ERR! code ERESOLVE",
+    "npm ERR! ERESOLVE unable to resolve dependency tree",
+    "npm ERR! While resolving: node-api@1.0.0",
+    "npm ERR! Found: express@6.0.0",
+    "npm ERR!",
+    "npm ERR! node_modules/express",
+    "npm ERR!   express@6.0.0 from the root project",
+    "npm ERR! Could not resolve dependency:",
+    "npm ERR! peer express@\"^4.17.1\" from some-package@2.3.1",
+    "npm ERR!",
+    "npm ERR! node_modules/some-package",
+    "npm ERR!   some-package@2.3.1 from the root project",
+    "npm ERR! Fix the upstream dependency conflict, or retry",
+    "npm ERR! this command with --force or --legacy-peer-deps",
+    "npm ERR!",
+    "npm ERR! Found: express@6.0.0",
+    "npm ERR! to accept an incorrect (and potentially broken) dependency resolution."
+  ],
+  "aiAnalysis": {
+    "rootCause": "Dependency conflict between express@6.0 and some-package@2.3.1",
+    "impact": "Deployment failed in staging environment",
+    "confidenceScore": 92,
+    "recommendedFix": [
+      "Update express to version 4.18.2 or higher.",
+      "Or downgrade express to 4.17.1.",
+      "Re-run the workflow."
+    ]
+  },
+  "relatedFailures": [
+    {
+      "id": "1",
+      "workflow": "Deploy Staging",
+      "failedAt": "May 16, 10:20 AM",
+      "error": "ERESOLVE unable to resolve",
+      "status": "Failed"
+    },
+    {
+      "id": "2",
+      "workflow": "Deploy Staging",
+      "failedAt": "May 15, 09:10 AM",
+      "error": "ETIMEDOUT connect timeout",
+      "status": "Failed"
+    },
+    {
+      "id": "3",
+      "workflow": "Backend CI",
+      "failedAt": "May 14, 11:30 AM",
+      "error": "npm install failed",
+      "status": "Failed"
+    }
+  ],
+  "actions": [
+    { "id": "retry", "label": "Retry Workflow", "variant": "outlined", "color": "primary" },
+    { "id": "create-pr", "label": "Create Pull Request", "variant": "outlined", "color": "primary" },
+    { "id": "view-logs", "label": "View Logs", "variant": "contained", "color": "primary" }
+  ]
+}

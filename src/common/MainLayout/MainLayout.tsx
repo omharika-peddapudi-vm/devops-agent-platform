@@ -1,6 +1,7 @@
 import './MainLayout.css';
 
 import {useState} from 'react';
+
 import Footer from '../Footer';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
@@ -13,11 +14,19 @@ type MainLayoutProps = {
 
 const MainLayout = ({pageTitle, pageSubtitle, children}: MainLayoutProps) => {
     const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
     return (
         <div className='main-layout'>
-            <Sidebar open={sidebarOpen} />
-            <div className={`main-layout-content ${sidebarOpen ? '' : 'sidebar-collapsed'}`}>
+            <Sidebar
+                isOpen={sidebarOpen}
+                isCollapsed={sidebarCollapsed}
+                onToggleCollapse={() => setSidebarCollapsed((prev) => !prev)}
+                onClose={() => setSidebarOpen(false)}
+            />
+            <div
+                className={`main-layout-content ${sidebarOpen ? '' : 'sidebar-collapsed'}`}
+            >
                 <Header
                     title={pageTitle}
                     subtitle={pageSubtitle}
