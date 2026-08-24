@@ -1,0 +1,7 @@
+{
+  "cloudProvider": "AWS",
+  "resourceGroup": "my-resource-group",
+  "resources": "aws_instance\naws_s3_bucket\naws_vpc",
+  "repoName": "terraform-infra",
+  "deployTargetName": "aks-cluster-prod"
+}

@@ -1,7 +1,9 @@
 import './Sidebar.css';
 
+import {BsChatDots} from 'react-icons/bs';
+import {FiHome} from 'react-icons/fi';
 import {MdOutlineMonitor, MdOutlineWarningAmber} from 'react-icons/md';
-import {TbRobot} from 'react-icons/tb';
+import {TbGitFork, TbRobot} from 'react-icons/tb';
 import {NavLink} from 'react-router-dom';
 
 import type {ReactNode} from 'react';
@@ -19,7 +21,19 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
         id: 'dashboard',
         label: 'Dashboard',
         path: '/dashboard',
-        icon: <MdOutlineMonitor size={17} className='sidebar-nav-icon' />,
+        icon: <FiHome size={17} className='sidebar-nav-icon' />,
+    },
+    {
+        id: 'ai-assistant',
+        label: 'AI Assistant',
+        path: '/ai-assistant',
+        icon: <BsChatDots size={17} className='sidebar-nav-icon' />,
+    },
+    {
+        id: 'pipeline-management',
+        label: 'Pipeline Management',
+        path: '/pipeline-management',
+        icon: <TbGitFork size={17} className='sidebar-nav-icon' />,
     },
     {
         id: 'workflow-monitoring',

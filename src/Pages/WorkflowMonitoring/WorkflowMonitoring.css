@@ -1,7 +1,7 @@
 .workflow-page {
     display: flex;
     flex-direction: column;
-    gap: var(--space-6);
+    gap: var(--space-4);
     width: 100%;
 }
 
@@ -95,7 +95,6 @@
 }
 
 /* Active Workflows Panel */
-
 
 .panel-heading {
     display: flex;
@@ -250,8 +249,6 @@
     align-items: start;
 }
 
-
-
 .details-main {
     display: flex;
     flex-direction: column;
@@ -327,8 +324,6 @@
     font-weight: var(--font-weight-semibold);
 }
 
-
-
 .log-list {
     display: flex;
     flex-direction: column;
@@ -340,21 +335,41 @@
     color: var(--text-secondary);
     max-height: 160px;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(15, 23, 42, 0.5) transparent;
+}
+
+.log-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.log-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.log-list::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.45);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+.log-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(15, 23, 42, 0.7);
+    border: 2px solid transparent;
+    background-clip: padding-box;
 }
 
 .log-item {
     padding: var(--space-1) 0;
 }
 
-
-
 .run-info-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: var(--space-3);
-    padding: var(--space-3) 0;
-    border-bottom: 1px solid var(--border-color);
+    padding: var(--space-4) 0;
     font-size: var(--font-size-sm);
 }
 
@@ -363,12 +378,11 @@
 }
 
 .run-info-label {
-    color: var(--text-secondary);
+    color: var(--text-primary);
 }
 
 .run-info-value {
-    color: var(--text-primary);
-    font-weight: var(--font-weight-medium);
+    color: var(--text-secondary);
     text-align: right;
 }
 

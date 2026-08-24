@@ -3,13 +3,17 @@ import './App.css';
 import {Navigate, Route, Routes} from 'react-router-dom';
 
 import MainLayout from './common/MainLayout';
+import AIAssistant from './Pages/AIAssistant/AIAssistant';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import FailureAnalysis from './Pages/FailureAnalysis/FailureAnalysis';
+import PipelineManagement from './Pages/PipelineManagement/PipelineManagement';
 import WorkflowMonitoring from './Pages/WorkflowMonitoring/WorkflowMonitoring';
 
 function App() {
     return (
         <Routes>
+            <Route path='/' element={<Navigate to='/dashboard' replace />} />
+
             <Route
                 path='/dashboard'
                 element={
@@ -18,6 +22,30 @@ function App() {
                         pageSubtitle='Overview of your DevOps automation platform'
                     >
                         <Dashboard />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path='/ai-assistant'
+                element={
+                    <MainLayout
+                        pageTitle='AI Assistant'
+                        pageSubtitle='Chat with AI to automate your DevOps tasks.'
+                    >
+                        <AIAssistant />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path='/pipeline-management'
+                element={
+                    <MainLayout
+                        pageTitle='Pipeline Management'
+                        pageSubtitle='Generate and manage CI/CD pipelines.'
+                    >
+                        <PipelineManagement />
                     </MainLayout>
                 }
             />
@@ -45,8 +73,6 @@ function App() {
                     </MainLayout>
                 }
             />
-
-            <Route path='*' element={<Navigate to='/' replace />} />
         </Routes>
     );
 }

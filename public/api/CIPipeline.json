@@ -1,0 +1,25 @@
+{
+  "pipelineTool": "github_actions",
+  "technology": "react",
+  "repository": "react-app",
+  "branch": "main",
+  "nodeVersion": "18.x",
+  "artifactName": "react-app-artifact",
+  "workflowName": "cd-deploy-workflow",
+  "generatedPipeline": {
+    "filename": "github_actions.yml",
+    "content": "name: React CI Pipeline\non:\n  push:\n    branches: [ main ]\n  pull_request:\n    branches: [ main ]\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: '18'\n      - name: Install dependencies\n        run: npm install\n      - name: Run tests\n        run: npm test -- --coverage\n      - name: Build application\n        run: npm run build\n"
+  },
+  "pipelineSummary": {
+    "stages": 4,
+    "jobs": 1,
+    "estimatedTime": "4m 32s",
+    "triggers": "Push, PR",
+    "includesTests": true
+  },
+  "recentPipelines": [
+    { "name": "react-ci-pipeline", "time": "Today, 10:30 AM" },
+    { "name": "node-api-ci", "time": "May 14, 09:15 AM" },
+    { "name": "web-app-ci", "time": "May 13, 04:20 PM" }
+  ]
+}
