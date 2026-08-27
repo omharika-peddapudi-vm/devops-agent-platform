@@ -1,12 +1,12 @@
 import './PipelineManagement.css';
 
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
-import {Button, Card, Typography} from '../../common/components';
+import { Button, Card, Typography } from '../../common/components';
 import {
-    fetchCDPipeline,
-    fetchCIPipeline,
-    fetchTerraformPipeline,
+	fetchCDPipeline,
+	fetchCIPipeline,
+	fetchTerraformPipeline,
 } from '../../Services/api';
 import CDPipeline from './CDPipeline';
 import CIPipeline from './CIPipeline';
@@ -25,12 +25,20 @@ const TABS = [
 const PipelineManagement = () => {
     const [ciTemplate, setCiTemplate] = useState<any>(null);
     const [ciData, setCiData] = useState<any>(null);
+    const [cdTemplate, setCdTemplate] = useState<any>(null);
     const [cdData, setCdData] = useState<any>(null);
+    const [tfTemplate, setTfTemplate] = useState<any>(null);
     const [tfData, setTfData] = useState<any>(null);
     const [initialLoading, setInitialLoading] = useState(true);
     const [generating, setGenerating] = useState(false);
     const [activeTab, setActiveTab] = useState('CI Pipeline');
     const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
+    const [cdFieldValues, setCdFieldValues] = useState<Record<string, string>>(
+        {},
+    );
+    const [tfFieldValues, setTfFieldValues] = useState<Record<string, string>>(
+        {},
+    );
 
     useEffect(() => {
         Promise.all([
@@ -48,7 +56,9 @@ const PipelineManagement = () => {
             .then(([ci, cd, tf]) => {
                 setCiTemplate(ci);
                 setCiData(ci);
+                setCdTemplate(cd);
                 setCdData(cd);
+                setTfTemplate(tf);
                 setTfData(tf);
                 setFieldValues({
                     repository: ci.repository ?? '',
@@ -56,6 +66,27 @@ const PipelineManagement = () => {
                     technology: ci.technology ?? '',
                     pipelineTool: ci.pipelineTool ?? '',
                     nodeVersion: ci.nodeVersion ?? '',
+                });
+                setCdFieldValues({
+                    targetEnvironment: cd.targetEnvironment ?? '',
+                    techStack: cd.techStack ?? '',
+                    version: cd.version ?? '',
+                    repoName: cd.repoName ?? '',
+                    resourceGroup: cd.resourceGroup ?? '',
+                    deploymentTargetName: cd.deploymentTargetName ?? '',
+                    ciTool: cd.ciTool ?? '',
+                    branchName: cd.branchName ?? '',
+                    artifactName: cd.artifactName ?? '',
+                    workflowName: cd.workflowName ?? '',
+                    ciPipelineName: cd.ciPipelineName ?? '',
+                });
+                setTfFieldValues({
+                    cloudProvider: tf.cloudProvider ?? '',
+                    resourceGroup: tf.resourceGroup ?? '',
+                    resources: tf.resources ?? '',
+                    repoName: tf.repoName ?? '',
+                    deployTargetName: tf.deployTargetName ?? '',
+                    workflowName: tf.workflowName ?? '',
                 });
             })
             .catch((e: unknown) =>
@@ -78,6 +109,38 @@ const PipelineManagement = () => {
         try {
             setGenerating(true);
 
+            if (activeTab === 'CD Pipeline') {
+                const cdPayload = {
+                    target: cdFieldValues.targetEnvironment ?? '',
+                    techstack: cdFieldValues.techStack ?? '',
+                    repo_name: cdFieldValues.repoName ?? '',
+                    resource_group_name: cdFieldValues.resourceGroup ?? '',
+                    deploy_target_name:
+                        cdFieldValues.deploymentTargetName ?? '',
+                    tool: cdFieldValues.ciTool ?? '',
+                    branch: cdFieldValues.branchName ?? '',
+                    artifact_name: cdFieldValues.artifactName ?? '',
+                    workflow_name: cdFieldValues.workflowName ?? '',
+                    ci_file_name: cdFieldValues.ciPipelineName ?? '',
+                };
+
+                const cdResponse = await fetchCDPipeline(cdPayload);
+                setCdData(cdResponse);
+                return;
+            }
+
+            if (activeTab === 'Terraform Pipeline') {
+                const tfResponse = await fetchTerraformPipeline({
+                    cloud_provider: tfFieldValues.cloudProvider ?? '',
+                    resource_group: tfFieldValues.resourceGroup ?? '',
+                    resources: tfFieldValues.resources ?? '',
+                    repo_name: tfFieldValues.repoName ?? '',
+                    deploy_target_name: tfFieldValues.deployTargetName ?? '',
+                });
+                setTfData(tfResponse);
+                return;
+            }
+
             const ciPayload = {
                 tool: fieldValues.pipelineTool,
                 techstack: fieldValues.technology,
@@ -97,9 +160,25 @@ const PipelineManagement = () => {
     const renderActiveTab = () => {
         switch (activeTab) {
             case 'CD Pipeline':
-                return <CDPipeline data={{cdPipeline: cdData}} />;
+                return (
+                    <CDPipeline
+                        data={{cdPipeline: cdData}}
+                        baseData={cdTemplate}
+                        fieldValues={cdFieldValues}
+                        setFieldValues={setCdFieldValues}
+                        generating={generating}
+                    />
+                );
             case 'Terraform Pipeline':
-                return <TerraformPipeline data={{terraformPipeline: tfData}} />;
+                return (
+                    <TerraformPipeline
+                        data={{terraformPipeline: tfData}}
+                        baseData={tfTemplate}
+                        fieldValues={tfFieldValues}
+                        setFieldValues={setTfFieldValues}
+                        generating={generating}
+                    />
+                );
             case 'Pipeline Library':
                 return <PipelineLibrary />;
             case 'Saved Pipelines':

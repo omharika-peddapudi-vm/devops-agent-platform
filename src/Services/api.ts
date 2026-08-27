@@ -1,5 +1,8 @@
+const DEFAULT_API_BASE_URL =
+    'https://devopsagent-backend-aegmehh9gcetepbf.eastus-01.azurewebsites.net';
 const API_BASE_URL =
-    import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '') ?? '';
+    import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, '') ??
+    DEFAULT_API_BASE_URL;
 
 const backendUrl = (path: string) => `${API_BASE_URL}${path}`;
 
@@ -45,14 +48,52 @@ export const fetchCIPipeline = async (payload: any) => {
     return response.json();
 };
 
-export const fetchCDPipeline = async () => {
+export const fetchCDPipeline = async (payload?: any) => {
+    if (payload) {
+        const response = await fetch(backendUrl('/yaml-ops/cd-builder'), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to load CD pipeline: ${response.status}`);
+        }
+
+        return response.json();
+    }
+
     const response = await fetch('/api/CDPipeline.json');
-    if (!response.ok)
-        throw new Error(`Failed to load CD pipeline: ${response.status}`);
+    if (!response.ok) {
+        throw new Error(
+            `Failed to load CD pipeline template: ${response.status}`,
+        );
+    }
+
     return response.json();
 };
 
-export const fetchTerraformPipeline = async () => {
+export const fetchTerraformPipeline = async (payload?: any) => {
+    if (payload) {
+        const response = await fetch(backendUrl('/yaml-ops/tf-builder'), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+            throw new Error(
+                `Failed to generate Terraform pipeline: ${response.status}`,
+            );
+        }
+
+        return response.json();
+    }
+
     const response = await fetch('/api/TerraformPipeline.json');
     if (!response.ok)
         throw new Error(
