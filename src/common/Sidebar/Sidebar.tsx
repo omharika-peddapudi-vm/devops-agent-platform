@@ -1,10 +1,10 @@
 import './Sidebar.css';
 
-import {BsChatDots} from 'react-icons/bs';
-import {FiHome} from 'react-icons/fi';
-import {MdOutlineMonitor, MdOutlineWarningAmber} from 'react-icons/md';
-import {TbGitFork, TbRobot} from 'react-icons/tb';
-import {NavLink} from 'react-router-dom';
+import { BsChatDots } from 'react-icons/bs';
+import { FiHome, FiUserX } from 'react-icons/fi';
+import { MdOutlineMonitor, MdOutlineWarningAmber } from 'react-icons/md';
+import { TbGitFork, TbRobot } from 'react-icons/tb';
+import { NavLink } from 'react-router-dom';
 
 import type {ReactNode} from 'react';
 
@@ -46,6 +46,12 @@ const SIDEBAR_ITEMS: SidebarItem[] = [
         label: 'Failure Analysis',
         path: '/failure-analysis',
         icon: <MdOutlineWarningAmber size={17} className='sidebar-nav-icon' />,
+    },
+    {
+        id: 'failure-agent',
+        label: 'Failure Agent',
+        path: '/failure-agent',
+        icon: <FiUserX size={17} className='sidebar-nav-icon' />,
     },
 ];
 

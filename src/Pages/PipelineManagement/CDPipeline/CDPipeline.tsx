@@ -2,7 +2,19 @@ import './CDPipeline.css';
 
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
-import { FiGlobe, FiPackage, FiServer, FiTag } from 'react-icons/fi';
+import {
+	FiActivity,
+	FiCheck,
+	FiClock,
+	FiDownload,
+	FiFile,
+	FiGlobe,
+	FiInfo,
+	FiPackage,
+	FiServer,
+	FiTag,
+	FiTrendingUp,
+} from 'react-icons/fi';
 import { SiGithubactions, SiReact } from 'react-icons/si';
 import { TbGitBranch } from 'react-icons/tb';
 
@@ -245,19 +257,7 @@ const CDPipeline = ({
                     {!generating && generatedPipeline.content && (
                         <div className='cd-pipeline-file-bar'>
                             <div className='cd-pipeline-file-name'>
-                                <svg
-                                    width='16'
-                                    height='16'
-                                    viewBox='0 0 24 24'
-                                    fill='none'
-                                    stroke='#2563eb'
-                                    strokeWidth='2'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
-                                >
-                                    <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
-                                    <polyline points='14 2 14 8 20 8' />
-                                </svg>
+                                <FiFile size={16} color='#2563eb' />
                                 <span>{generatedPipeline.filename}</span>
                             </div>
                             <Button
@@ -344,6 +344,7 @@ const CDPipeline = ({
                         color='primary'
                         size='small'
                         ariaLabel='Download'
+                        startIcon={<FiDownload size={14} />}
                     >
                         Download
                     </Button>
@@ -352,6 +353,7 @@ const CDPipeline = ({
                         color='primary'
                         size='small'
                         ariaLabel='Save Pipeline'
+                        startIcon={<FiFile size={14} />}
                     >
                         Save Pipeline
                     </Button>
@@ -374,20 +376,7 @@ const CDPipeline = ({
                         <div className='summary-list'>
                             <div className='summary-item'>
                                 <div className='summary-icon summary-icon--accent'>
-                                    <svg
-                                        width='18'
-                                        height='18'
-                                        viewBox='0 0 24 24'
-                                        fill='none'
-                                        stroke='currentColor'
-                                        strokeWidth='2'
-                                        strokeLinecap='round'
-                                        strokeLinejoin='round'
-                                    >
-                                        <path d='M4 20V7l8-4 8 4v13' />
-                                        <path d='M8 10h8' />
-                                        <path d='M8 14h8' />
-                                    </svg>
+                                    <FiServer size={18} />
                                 </div>
                                 <div>
                                     <Typography variant='caption'>
@@ -400,25 +389,7 @@ const CDPipeline = ({
                             </div>
                             <div className='summary-item'>
                                 <div className='summary-icon'>
-                                    <svg
-                                        width='18'
-                                        height='18'
-                                        viewBox='0 0 24 24'
-                                        fill='none'
-                                        stroke='currentColor'
-                                        strokeWidth='2'
-                                        strokeLinecap='round'
-                                        strokeLinejoin='round'
-                                    >
-                                        <circle cx='12' cy='12' r='10' />
-                                        <line x1='12' y1='8' x2='12' y2='12' />
-                                        <line
-                                            x1='12'
-                                            y1='16'
-                                            x2='12.01'
-                                            y2='16'
-                                        />
-                                    </svg>
+                                    <FiInfo size={18} />
                                 </div>
                                 <div>
                                     <Typography variant='caption'>
@@ -431,21 +402,7 @@ const CDPipeline = ({
                             </div>
                             <div className='summary-item'>
                                 <div className='summary-icon'>
-                                    <svg
-                                        width='18'
-                                        height='18'
-                                        viewBox='0 0 24 24'
-                                        fill='none'
-                                        stroke='currentColor'
-                                        strokeWidth='2'
-                                        strokeLinecap='round'
-                                        strokeLinejoin='round'
-                                    >
-                                        <polyline points='16 3 21 3 21 8' />
-                                        <line x1='4' y1='20' x2='21' y2='3' />
-                                        <polyline points='21 16 21 21 16 21' />
-                                        <line x1='15' y1='15' x2='21' y2='21' />
-                                    </svg>
+                                    <FiTrendingUp size={18} />
                                 </div>
                                 <div>
                                     <Typography variant='caption'>
@@ -458,18 +415,7 @@ const CDPipeline = ({
                             </div>
                             <div className='summary-item'>
                                 <div className='summary-icon summary-icon--accent'>
-                                    <svg
-                                        width='18'
-                                        height='18'
-                                        viewBox='0 0 24 24'
-                                        fill='none'
-                                        stroke='currentColor'
-                                        strokeWidth='2.5'
-                                        strokeLinecap='round'
-                                        strokeLinejoin='round'
-                                    >
-                                        <polyline points='20 6 9 17 4 12' />
-                                    </svg>
+                                    <FiCheck size={18} strokeWidth={2.5} />
                                 </div>
                                 <div>
                                     <Typography variant='caption'>
@@ -484,19 +430,7 @@ const CDPipeline = ({
                             </div>
                             <div className='summary-item'>
                                 <div className='summary-icon'>
-                                    <svg
-                                        width='18'
-                                        height='18'
-                                        viewBox='0 0 24 24'
-                                        fill='none'
-                                        stroke='currentColor'
-                                        strokeWidth='2'
-                                        strokeLinecap='round'
-                                        strokeLinejoin='round'
-                                    >
-                                        <circle cx='12' cy='12' r='10' />
-                                        <polyline points='12 6 12 12 16 14' />
-                                    </svg>
+                                    <FiClock size={18} />
                                 </div>
                                 <div>
                                     <Typography variant='caption'>
@@ -510,19 +444,7 @@ const CDPipeline = ({
 
                             <div className='summary-item'>
                                 <div className='summary-icon'>
-                                    <svg
-                                        width='18'
-                                        height='18'
-                                        viewBox='0 0 24 24'
-                                        fill='none'
-                                        stroke='currentColor'
-                                        strokeWidth='2'
-                                        strokeLinecap='round'
-                                        strokeLinejoin='round'
-                                    >
-                                        <path d='M3 12h5l2 4 5-10 2 6h4' />
-                                        <path d='M19 6l2 2-2 2' />
-                                    </svg>
+                                    <FiActivity size={18} />
                                 </div>
                                 <div>
                                     <Typography variant='caption'>
@@ -536,20 +458,7 @@ const CDPipeline = ({
 
                             <div className='summary-item'>
                                 <div className='summary-icon'>
-                                    <svg
-                                        width='18'
-                                        height='18'
-                                        viewBox='0 0 24 24'
-                                        fill='none'
-                                        stroke='currentColor'
-                                        strokeWidth='2'
-                                        strokeLinecap='round'
-                                        strokeLinejoin='round'
-                                    >
-                                        <path d='M4 18h16' />
-                                        <path d='M7 15l3-3 3 2 4-6' />
-                                        <path d='M17 8h2v2' />
-                                    </svg>
+                                    <FiTrendingUp size={18} />
                                 </div>
                                 <div>
                                     <Typography variant='caption'>
@@ -608,41 +517,9 @@ const CDPipeline = ({
                                                 }`}
                                             >
                                                 {isDone ? (
-                                                    <svg
-                                                        viewBox='0 0 24 24'
-                                                        aria-hidden='true'
-                                                    >
-                                                        <path
-                                                            d='M6 12.5L10.2 16.7L18 8.9'
-                                                            fill='none'
-                                                            stroke='currentColor'
-                                                            strokeWidth='2.2'
-                                                            strokeLinecap='round'
-                                                            strokeLinejoin='round'
-                                                        />
-                                                    </svg>
+                                                    <FiCheck aria-hidden='true' />
                                                 ) : (
-                                                    <svg
-                                                        viewBox='0 0 24 24'
-                                                        aria-hidden='true'
-                                                    >
-                                                        <circle
-                                                            cx='12'
-                                                            cy='12'
-                                                            r='7'
-                                                            fill='none'
-                                                            stroke='currentColor'
-                                                            strokeWidth='1.8'
-                                                        />
-                                                        <path
-                                                            d='M12 8V12L14.8 14.2'
-                                                            fill='none'
-                                                            stroke='currentColor'
-                                                            strokeWidth='1.8'
-                                                            strokeLinecap='round'
-                                                            strokeLinejoin='round'
-                                                        />
-                                                    </svg>
+                                                    <FiClock aria-hidden='true' />
                                                 )}
                                             </div>
                                         </div>

@@ -3,8 +3,11 @@ import './CIPipeline.css';
 import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import {
-	FiCheckCircle,
-	FiClock,
+    FiCheckCircle,
+    FiClock,
+    FiCopy,
+    FiDownload,
+    FiFile,
 	FiGitBranch,
 	FiGitPullRequest,
 	FiPackage,
@@ -316,19 +319,7 @@ const CIPipeline = ({
                     {!generating && generatedPipeline.content && (
                         <div className='pipeline-file-bar'>
                             <div className='pipeline-file-name'>
-                                <svg
-                                    width='16'
-                                    height='16'
-                                    viewBox='0 0 24 24'
-                                    fill='none'
-                                    stroke='#2563eb'
-                                    strokeWidth='2'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
-                                >
-                                    <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
-                                    <polyline points='14 2 14 8 20 8' />
-                                </svg>
+                                <FiFile size={16} color='#2563eb' />
                                 <span>{generatedPipeline.filename}</span>
                             </div>
                             <Button
@@ -337,27 +328,7 @@ const CIPipeline = ({
                                 size='small'
                                 ariaLabel='Copy'
                             >
-                                <svg
-                                    width='14'
-                                    height='14'
-                                    viewBox='0 0 24 24'
-                                    fill='none'
-                                    stroke='currentColor'
-                                    strokeWidth='2'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
-                                    style={{marginRight: 4}}
-                                >
-                                    <rect
-                                        x='9'
-                                        y='9'
-                                        width='13'
-                                        height='13'
-                                        rx='2'
-                                        ry='2'
-                                    />
-                                    <path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1' />
-                                </svg>
+                                <FiCopy size={14} style={{marginRight: 4}} />
                                 Copy
                             </Button>
                         </div>
@@ -433,22 +404,7 @@ const CIPipeline = ({
                         color='primary'
                         size='small'
                         ariaLabel='Download'
-                        startIcon={
-                            <svg
-                                width='14'
-                                height='14'
-                                viewBox='0 0 24 24'
-                                fill='none'
-                                stroke='currentColor'
-                                strokeWidth='2'
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                            >
-                                <path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4' />
-                                <polyline points='7 10 12 15 17 10' />
-                                <line x1='12' y1='15' x2='12' y2='3' />
-                            </svg>
-                        }
+                        startIcon={<FiDownload size={14} />}
                     >
                         Download
                     </Button>
@@ -457,21 +413,7 @@ const CIPipeline = ({
                         color='primary'
                         size='small'
                         ariaLabel='Save Pipeline'
-                        startIcon={
-                            <svg
-                                width='14'
-                                height='14'
-                                viewBox='0 0 24 24'
-                                fill='none'
-                                stroke='currentColor'
-                                strokeWidth='2'
-                                strokeLinecap='round'
-                                strokeLinejoin='round'
-                            >
-                                <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
-                                <polyline points='14 2 14 8 20 8' />
-                            </svg>
-                        }
+                        startIcon={<FiFile size={14} />}
                     >
                         Save Pipeline
                     </Button>

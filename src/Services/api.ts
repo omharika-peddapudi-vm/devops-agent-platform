@@ -5,6 +5,11 @@ const API_BASE_URL =
     DEFAULT_API_BASE_URL;
 
 const backendUrl = (path: string) => `${API_BASE_URL}${path}`;
+const FAILURE_AGENT_API_URL =
+    import.meta.env.VITE_FAILURE_AGENT_API_URL?.replace(/\/$/, '') ??
+    (import.meta.env.DEV
+        ? '/failure-agent-api'
+        : 'https://failureagent-aeazhcavfya3c8dm.canadacentral-01.azurewebsites.net');
 
 export const fetchDashboard = async () => {
     const response = await fetch('/api/Dashboard.json');
@@ -118,4 +123,44 @@ export const fetchFailureAnalysis = async () => {
         throw new Error(`Failed to load Failure Analysis: ${response.status}`);
     }
     return response.json();
+};
+
+export const fetchFailureAgent = async () => {
+    const response = await fetch('/api/FailureAgent.json');
+    if (!response.ok) {
+        throw new Error(
+            `Failed to load failure agent data: ${response.status}`,
+        );
+    }
+    return response.json();
+};
+
+export const triggerFailureAgent = async (payload: {
+    prompt: string;
+    pat_token: string;
+}) => {
+    const response = await fetch(`${FAILURE_AGENT_API_URL}/failure_agent`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+    });
+    const responseText = await response.text();
+
+    if (!response.ok) {
+        throw new Error(
+            `Failure agent request failed: ${response.status}${responseText ? ` - ${responseText}` : ''}`,
+        );
+    }
+
+    if (!responseText.trim()) {
+        throw new Error('Failure agent returned an empty response.');
+    }
+
+    try {
+        return JSON.parse(responseText);
+    } catch {
+        return responseText;
+    }
 };

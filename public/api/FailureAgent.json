@@ -1,0 +1,8 @@
+{
+  "howItWorks": [
+    {"step": 1, "title": "Provide Input", "description": "Enter the prompt describing the issue and your GitHub PAT token."},
+    {"step": 2, "title": "Trigger Agent", "description": "Our Failure Agent will analyze the request and trigger the backend."},
+    {"step": 3, "title": "Get Analysis", "description": "Review the backend output in the console."}
+  ],
+  "output": "Pipeline trigger and monitoring completed successfully.\n\n- **Project:** RetailPlatform\n- **Pipeline:** deploy-app.yml (ID: 14)\n- **Branch:** develop\n- **Run ID:** 128\n- **Build Number:** 20260904.7\n- **Final State:** completed\n- **Final Result:** partiallySucceeded\n\nObserved behavior:\n\n- **Build Stage:** succeeded\n- **Unit Tests:** succeeded\n- **Deployment Stage:** succeeded\n- **Integration Tests:** partially succeeded\n- **Demo: Force deterministic failure:** skipped\n- No repository or pipeline configuration changes were made.\n\nLogs:\n\n- https://dev.azure.com/example-org/.../logs/1\n- https://dev.azure.com/example-org/.../logs/2\n- https://dev.azure.com/example-org/.../logs/3\n- https://dev.azure.com/example-org/.../logs/4\n- https://dev.azure.com/example-org/.../logs/5"
+}

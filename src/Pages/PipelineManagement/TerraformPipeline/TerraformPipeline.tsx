@@ -6,6 +6,9 @@ import {
 	FiCheckCircle,
 	FiClock,
 	FiCloud,
+	FiCopy,
+	FiDownload,
+	FiFile,
 	FiGitBranch,
 	FiGitPullRequest,
 	FiLayers,
@@ -224,23 +227,10 @@ const TerraformPipeline = ({
             <div className='tf-card-column'>
                 <Card variant='outlined-raised' size='lg'>
                     <Typography variant='h3'>Generated TF Pipeline</Typography>
-
                     {!generating && generatedPipeline.content && (
                         <div className='tf-file-bar'>
                             <div className='tf-file-name'>
-                                <svg
-                                    width='16'
-                                    height='16'
-                                    viewBox='0 0 24 24'
-                                    fill='none'
-                                    stroke='#2563eb'
-                                    strokeWidth='2'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
-                                >
-                                    <path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
-                                    <polyline points='14 2 14 8 20 8' />
-                                </svg>
+                                <FiFile size={16} color='#2563eb' />
                                 <span>{generatedPipeline.filename}</span>
                             </div>
                             <Button
@@ -249,27 +239,7 @@ const TerraformPipeline = ({
                                 size='small'
                                 ariaLabel='Copy'
                             >
-                                <svg
-                                    width='14'
-                                    height='14'
-                                    viewBox='0 0 24 24'
-                                    fill='none'
-                                    stroke='currentColor'
-                                    strokeWidth='2'
-                                    strokeLinecap='round'
-                                    strokeLinejoin='round'
-                                    style={{marginRight: 4}}
-                                >
-                                    <rect
-                                        x='9'
-                                        y='9'
-                                        width='13'
-                                        height='13'
-                                        rx='2'
-                                        ry='2'
-                                    />
-                                    <path d='M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1' />
-                                </svg>
+                                <FiCopy size={14} style={{marginRight: 4}} />
                                 Copy
                             </Button>
                         </div>
@@ -335,6 +305,7 @@ const TerraformPipeline = ({
                         color='primary'
                         size='small'
                         ariaLabel='Download'
+                        startIcon={<FiDownload size={14} />}
                     >
                         Download
                     </Button>
@@ -343,6 +314,7 @@ const TerraformPipeline = ({
                         color='primary'
                         size='small'
                         ariaLabel='Save Pipeline'
+                        startIcon={<FiFile size={14} />}
                     >
                         Save Pipeline
                     </Button>

@@ -1,10 +1,11 @@
 import './App.css';
 
-import {Navigate, Route, Routes} from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import MainLayout from './common/MainLayout';
 import AIAssistant from './Pages/AIAssistant/AIAssistant';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import FailureAgent from './Pages/FailureAgent/FailureAgent';
 import FailureAnalysis from './Pages/FailureAnalysis/FailureAnalysis';
 import PipelineManagement from './Pages/PipelineManagement/PipelineManagement';
 import WorkflowMonitoring from './Pages/WorkflowMonitoring/WorkflowMonitoring';
@@ -70,6 +71,18 @@ function App() {
                         pageSubtitle='Analyze workflow failures and get AI-powered recommendations.'
                     >
                         <FailureAnalysis />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path='/failure-agent'
+                element={
+                    <MainLayout
+                        pageTitle='Failure Agent'
+                        pageSubtitle='Analyze failures and get actionable corrective steps.'
+                    >
+                        <FailureAgent />
                     </MainLayout>
                 }
             />
