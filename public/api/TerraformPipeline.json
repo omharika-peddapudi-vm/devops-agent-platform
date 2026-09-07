@@ -1,0 +1,25 @@
+{
+  "cloudProvider": "webapp",
+  "resourceGroup": "devops_maf",
+  "resources": "python",
+  "repoName": "terraform-infra",
+  "deployTargetName": "webapp",
+  "workflowName": "tf-deploy-workflow",
+  "generatedPipeline": {
+    "filename": "terraform-pipeline.yml",
+    "content": "name: Terraform Infrastructure Pipeline\non:\n  push:\n    branches: [ main ]\n  workflow_dispatch:\n\njobs:\n  terraform:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n      - name: Setup Terraform\n        uses: hashicorp/setup-terraform@v3\n      - name: Terraform Init\n        run: terraform init\n      - name: Terraform Plan\n        run: terraform plan\n      - name: Terraform Apply\n        run: terraform apply -auto-approve\n"
+  },
+  "summary": {
+    "cloudProvider": "AWS",
+    "resources": "3 resources",
+    "estimatedTime": "7m 10s",
+    "stages": 4,
+    "jobs": 1,
+    "triggers": "Push, Manual"
+  },
+  "recentPipelines": [
+    { "name": "terraform-infra-main", "time": "Today, 09:10 AM" },
+    { "name": "network-foundation", "time": "Aug 24, 03:45 PM" },
+    { "name": "platform-baseline", "time": "Aug 22, 11:20 AM" }
+  ]
+}

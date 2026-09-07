@@ -1,0 +1,338 @@
+.failure-agent-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+.failure-agent-input-card,
+.failure-agent-result-card {
+    min-height: unset !important;
+    gap: var(--space-5);
+    padding-top: var(--space-6) !important;
+}
+.failure-agent-section-title,
+.failure-agent-result-header,
+.failure-agent-status,
+.failure-agent-how-step {
+    display: flex;
+    align-items: center;
+}
+.failure-agent-section-title {
+    gap: var(--space-3);
+}
+.failure-agent-step {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background: #7868e6;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+}
+.failure-agent-section-title h3 {
+    margin: 0;
+}
+.failure-agent-input-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.85fr) minmax(310px, 1fr);
+    gap: var(--space-8);
+    align-items: center;
+}
+.failure-agent-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+.failure-agent-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+.failure-agent-field label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.failure-agent-field textarea {
+    min-height: 150px;
+    resize: vertical;
+    padding: 18px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--text-primary);
+    font: inherit;
+    font-size: var(--font-size-sm);
+    outline: none;
+}
+.failure-agent-field textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+.failure-agent-counter {
+    align-self: flex-end;
+    color: var(--text-muted);
+    font-size: 10px;
+    margin-top: -5px;
+}
+.failure-agent-how-it-works {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
+    min-height: 440px;
+    padding: 30px 28px;
+    box-sizing: border-box;
+    border: 2px solid #e8e6fe;
+    border-radius: 16px;
+    background: #fcfbff;
+}
+.failure-agent-how-it-works h6 {
+    color: #5a4dc6;
+    margin: 0;
+    font-size: 1rem !important;
+}
+.failure-agent-how-step {
+    align-items: flex-start;
+    gap: 14px;
+}
+.failure-agent-how-icon {
+    display: grid;
+    place-items: center;
+    flex: 0 0 54px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #f1efff;
+    color: #6555d7;
+}
+.failure-agent-how-icon svg {
+    width: 25px;
+    height: 25px;
+}
+.failure-agent-how-number {
+    display: grid;
+    place-items: center;
+    flex: 0 0 27px;
+    width: 27px;
+    height: 27px;
+    margin-top: 1px;
+    border-radius: 50%;
+    background: #6252d3;
+    color: white;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+}
+.failure-agent-how-step h6,
+.failure-agent-how-step span {
+    margin: 0;
+}
+.failure-agent-how-step div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.failure-agent-how-step div h6 {
+    color: var(--text-primary);
+    font-size: 1rem;
+    line-height: 1.35;
+}
+.failure-agent-how-step div span {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.failure-agent-trigger {
+    align-self: flex-start;
+    background: #5945d6 !important;
+    min-width: 165px;
+    color: white !important;
+    margin-top: 20px !important;
+}
+.failure-agent-trigger:hover {
+    background: #4734bd !important;
+}
+.failure-agent-token-field {
+    position: relative;
+    width: 100%;
+}
+
+.failure-agent-token-field > div,
+.failure-agent-token-field > div > div {
+    width: 100%;
+}
+
+.failure-agent-token-field label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.failure-agent-token-field label + div {
+    margin-top: var(--space-3) !important;
+}
+
+.failure-agent-token-field input {
+    width: 100% !important;
+    height: 40px !important;
+    padding-left: 20px !important;
+    padding-right: 46px !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    background: transparent !important;
+    box-sizing: border-box;
+    font-size: var(--font-size-sm) !important;
+    color: var(--text-primary) !important;
+}
+.failure-agent-token-field input:focus {
+    border-color: var(--color-primary) !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+    outline: none;
+}
+.failure-agent-token-toggle {
+    appearance: none;
+    position: absolute;
+    right: 11px;
+    bottom: 4px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    padding-bottom: 3px !important;
+    border: 0 !important;
+    border-radius: var(--radius-sm);
+    background: transparent !important;
+    color: grey !important;
+    cursor: pointer;
+    box-shadow: none !important;
+    outline: none !important;
+}
+.failure-agent-token-toggle:hover,
+.failure-agent-token-toggle:focus,
+.failure-agent-token-toggle:focus-visible,
+.failure-agent-token-toggle:active {
+    color: var(--color-primary);
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+.failure-agent-token-toggle svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+}
+.failure-agent-trigger-feedback {
+    margin-top: -8px;
+}
+.failure-agent-result-header {
+    justify-content: space-between;
+    gap: var(--space-4);
+}
+.failure-agent-console-output {
+    margin: 0;
+    padding: var(--space-5);
+    overflow-x: auto;
+    border: 0;
+    border-top: 1px solid #263244;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    background: #0b111b;
+    color: rgb(3, 196, 3);
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: var(--font-size-xs);
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+.failure-agent-console {
+    overflow: hidden;
+    border: 1px solid #182333;
+    border-radius: var(--radius-md);
+    background: #0b111b;
+}
+.failure-agent-console-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 50px;
+    padding: 0 var(--space-3);
+    background: #111827;
+    color: #d1d1db;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 15px;
+}
+.failure-agent-console-header > span,
+.failure-agent-copy-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+.failure-agent-copy-button {
+    padding: 5px 9px;
+    border: 1px solid #2b3748;
+    border-radius: 6px;
+    background: transparent;
+    color: #d1d5db;
+    cursor: pointer;
+    font: inherit;
+}
+.failure-agent-copy-button:hover {
+    background: #1f2937;
+    color: white;
+}
+.failure-agent-result-loading {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--text-muted);
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: var(--font-size-sm);
+}
+.failure-agent-loading-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    animation: failure-agent-pulse 1s ease-in-out infinite;
+}
+@keyframes failure-agent-pulse {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+.failure-agent-status {
+    gap: var(--space-4);
+}
+.failure-agent-status > span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background: #effcf4;
+    color: #20a45a;
+    font-size: 10px;
+}
+.failure-agent-status svg {
+    width: 12px;
+}
+@media (max-width: 800px) {
+    .failure-agent-input-grid {
+        grid-template-columns: 1fr;
+    }
+    .failure-agent-result-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

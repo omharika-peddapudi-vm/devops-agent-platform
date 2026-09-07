@@ -1,0 +1,83 @@
+{
+  "conversationHistory": [
+    {
+      "id": "conv-1",
+      "title": "Production deploy",
+      "subtitle": "2 mins ago",
+      "active": true
+    },
+    {
+      "id": "conv-2",
+      "title": "Infra drift check",
+      "subtitle": "15 mins ago"
+    },
+    {
+      "id": "conv-3",
+      "title": "Incident triage",
+      "subtitle": "1 hour ago"
+    },
+    {
+      "id": "conv-4",
+      "title": "QA remediation",
+      "subtitle": "Yesterday"
+    }
+  ],
+  "activeConversation": {
+    "title": "Production deploy",
+    "summary": "Reviewing release readiness and deployment risk factors.",
+    "messages": [
+      {
+        "id": "msg-1",
+        "sender": "assistant",
+        "text": "I reviewed the production release checklist and identified one blocked dependency in the VPC policy rollout.",
+        "time": "09:40 AM"
+      },
+      {
+        "id": "msg-2",
+        "sender": "user",
+        "text": "Can you help me validate the fix and release readiness before we proceed?",
+        "time": "09:42 AM"
+      },
+      {
+        "id": "msg-3",
+        "sender": "assistant",
+        "text": "Yes. I have checked the previous deploy logs, the env parity checks and the autoscaling thresholds. Everything looks healthy except the policy drift alert.",
+        "time": "09:43 AM"
+      }
+    ]
+  },
+  "agentFlow": [
+    {
+      "id": "flow-1",
+      "name": "Policy analysis",
+      "status": "completed",
+      "description": "Validated configuration drift and dependencies"
+    },
+    {
+      "id": "flow-2",
+      "name": "Release checks",
+      "status": "in-progress",
+      "description": "Checking environment parity and rollback window"
+    },
+    {
+      "id": "flow-3",
+      "name": "Deploy gateway",
+      "status": "pending",
+      "description": "Waiting on approval to trigger rollout"
+    }
+  ],
+  "executionDetails": {
+    "status": "Running",
+    "progress": 45,
+    "summary": [
+      {"label": "Deployment target", "value": "prod-us-east-1"},
+      {"label": "Last health check", "value": "Healthy"},
+      {"label": "Rollback window", "value": "12 minutes"}
+    ],
+    "logs": [
+      {"time": "09:38", "text": "Environment configuration scan completed successfully."},
+      {"time": "09:40", "text": "Policy drift alert detected, reviewing remediation path."},
+      {"time": "09:42", "text": "Checksum validation complete for the production bundle."}
+    ]
+  }
+}

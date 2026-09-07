@@ -1,0 +1,33 @@
+{
+  "targetEnvironment": "webapp",
+  "techStack": "python",
+  "version": "18.x",
+  "repoName": "react-app",
+  "resourceGroup": "devops_maf",
+  "deploymentTargetName": "webapp",
+  "ciTool": "github_actions",
+  "branchName": "main",
+  "artifactName": "react-app-artifact",
+  "workflowName": "cd-deploy-workflow",
+  "ciPipelineName": "react-ci-pipeline",
+  "generatedPipeline": {
+    "filename": "cd-pipeline.yml",
+    "content": "name: CD Pipeline\non:\n  workflow_dispatch:\n    inputs:\n      environment:\n        description: 'Select environment'\n        required: true\n        default: 'production'\n\njobs:\n  deploy:\n    runs-on: ubuntu-latest\n    environment: ${{ github.event.inputs.environment }}\n    steps:\n      - name: Checkout code\n        uses: actions/checkout@v4\n\n      - name: Setup Node.js\n        uses: actions/setup-node@v4\n        with:\n          node-version: '18'\n\n      - name: Install dependencies\n        run: npm install\n\n      - name: Build application\n        run: npm run build\n\n      - name: Deploy to AKS\n        run: |\n          kubectl apply -f k8s/\n\n      - name: Run Post Deployment Tests\n        run: npm run test:e2e\n\n      - name: Notify on Success\n        if: success()\n        run: echo \"Deployment to ${{ github.event.inputs.environment }} successful\""
+  },
+  "summary": {
+    "environments": 4,
+    "deploymentTarget": "AKS",
+    "strategy": "Blue-Green",
+    "approvalRequired": "Yes",
+    "estimatedDuration": "12m 45s",
+    "rollbackOnFailure": "Enabled",
+    "postDeploymentTests": "Enabled",
+    "stages": [
+      { "name": "Deploy to Dev", "status": "Auto", "done": true },
+      { "name": "Deploy to QA", "status": "Auto", "done": true },
+      { "name": "Deploy to UAT", "status": "Manual Approval", "done": "pending" },
+      { "name": "Deploy to Production", "status": "Manual Approval", "done": false },
+      { "name": "Post Deployment Tests", "status": "Auto", "done": false }
+    ]
+  }
+}

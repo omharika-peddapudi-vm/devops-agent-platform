@@ -1,15 +1,20 @@
 import './App.css';
 
-import {Navigate, Route, Routes} from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import MainLayout from './common/MainLayout';
+import AIAssistant from './Pages/AIAssistant/AIAssistant';
 import Dashboard from './Pages/Dashboard/Dashboard';
+import FailureAgent from './Pages/FailureAgent/FailureAgent';
 import FailureAnalysis from './Pages/FailureAnalysis/FailureAnalysis';
+import PipelineManagement from './Pages/PipelineManagement/PipelineManagement';
 import WorkflowMonitoring from './Pages/WorkflowMonitoring/WorkflowMonitoring';
 
 function App() {
     return (
         <Routes>
+            <Route path='/' element={<Navigate to='/dashboard' replace />} />
+
             <Route
                 path='/dashboard'
                 element={
@@ -18,6 +23,30 @@ function App() {
                         pageSubtitle='Overview of your DevOps automation platform'
                     >
                         <Dashboard />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path='/ai-assistant'
+                element={
+                    <MainLayout
+                        pageTitle='AI Assistant'
+                        pageSubtitle='Chat with AI to automate your DevOps tasks.'
+                    >
+                        <AIAssistant />
+                    </MainLayout>
+                }
+            />
+
+            <Route
+                path='/pipeline-management'
+                element={
+                    <MainLayout
+                        pageTitle='Pipeline Management'
+                        pageSubtitle='Generate and manage CI/CD pipelines.'
+                    >
+                        <PipelineManagement />
                     </MainLayout>
                 }
             />
@@ -46,7 +75,17 @@ function App() {
                 }
             />
 
-            <Route path='*' element={<Navigate to='/' replace />} />
+            <Route
+                path='/failure-agent'
+                element={
+                    <MainLayout
+                        pageTitle='Failure Agent'
+                        pageSubtitle='Analyze failures and get actionable corrective steps.'
+                    >
+                        <FailureAgent />
+                    </MainLayout>
+                }
+            />
         </Routes>
     );
 }
